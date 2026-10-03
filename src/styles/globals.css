@@ -1,0 +1,248 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --color-bg: #0B0F1A;
+    --color-surface: #1F2937;
+    --color-border: #374151;
+    --color-text-primary: #E5E7EB;
+    --color-text-secondary: #94A3B8;
+    --color-text-muted: #64748B;
+    --color-brand-blue-primary: #0B3D91;
+    --color-brand-blue-accent: #00A3FF;
+    --color-brand-red-primary: #E11D2E;
+    --color-brand-gold-accent: #F5B800;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #0B0F1A;
+      --color-surface: #1F2937;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-brand-dark-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-brand-dark-bg text-brand-text-primary font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  ::selection {
+    @apply bg-brand-blue-primary/30 text-brand-text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-dark-bg;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-dark-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-text-muted;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .section-sm {
+    @apply py-10 sm:py-12 lg:py-16;
+  }
+
+  .section-heading {
+    @apply text-display-sm font-semibold text-brand-text-primary;
+  }
+
+  .section-subheading {
+    @apply text-body-lg text-brand-text-secondary max-w-2xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-radius-md font-medium transition-all duration-fast ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark-bg disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-blue-primary text-white hover:bg-brand-blue-primary/90 active:bg-brand-blue-primary shadow-shadow-md hover:shadow-shadow-brand-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-brand-dark-surface text-brand-text-primary border border-brand-dark-border hover:bg-brand-dark-border hover:border-brand-blue-primary/50;
+  }
+
+  .btn-accent {
+    @apply btn bg-gradient-to-r from-brand-red-primary to-brand-gold-accent text-white hover:from-brand-red-primary/90 hover:to-brand-gold-accent/90 shadow-shadow-md hover:shadow-shadow-brand-hover;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-brand-text-secondary hover:text-brand-text-primary hover:bg-brand-dark-surface;
+  }
+
+  .card {
+    @apply bg-brand-dark-surface border border-brand-dark-border rounded-radius-lg overflow-hidden transition-all duration-normal ease-out hover:border-brand-blue-primary/30 hover:shadow-shadow-lg;
+  }
+
+  .card-hover {
+    @apply card hover:-translate-y-1 hover:shadow-shadow-xl;
+  }
+
+  .link-external {
+    @apply inline-flex items-center gap-1 text-brand-blue-accent hover:text-brand-blue-accent/80 transition-colors duration-fast;
+  }
+
+  .link-internal {
+    @apply text-brand-blue-accent hover:text-brand-blue-accent/80 transition-colors duration-fast underline-offset-2 hover:underline;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-radius-sm text-caption font-medium;
+  }
+
+  .badge-blue {
+    @apply badge bg-brand-blue-primary/20 text-brand-blue-accent border border-brand-blue-primary/30;
+  }
+
+  .badge-red {
+    @apply badge bg-brand-red-primary/20 text-brand-red-primary border border-brand-red-primary/30;
+  }
+
+  .badge-gold {
+    @apply badge bg-brand-gold-accent/20 text-brand-gold-accent border border-brand-gold-accent/30;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-2 py-1 rounded-radius-sm text-caption font-medium bg-brand-dark-border text-brand-text-secondary;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 rounded-radius-md bg-brand-dark-bg border border-brand-dark-border text-brand-text-primary placeholder-brand-text-muted focus:outline-none focus:ring-2 focus:ring-brand-blue-primary focus:border-transparent transition-all duration-fast;
+  }
+
+  .label {
+    @apply block text-body-sm font-medium text-brand-text-primary mb-2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text-blue {
+    @apply bg-gradient-to-r from-brand-blue-primary to-brand-blue-accent bg-clip-text text-transparent;
+  }
+
+  .gradient-text-accent {
+    @apply bg-gradient-to-r from-brand-red-primary to-brand-gold-accent bg-clip-text text-transparent;
+  }
+
+  .grid-pattern {
+    background-image: 
+      linear-gradient(rgba(11, 61, 145, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 61, 145, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-dark-bg;
+  }
+
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-blue-primary focus:text-white focus:rounded-radius-md focus:font-medium;
+  }
+}
+
+/* Print styles for CV */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: black !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #666;
+  }
+
+  .container-custom {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .section {
+    padding: 1rem 0;
+  }
+
+  .card {
+    border: 1px solid #ddd;
+    box-shadow: none;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .btn {
+    display: none;
+  }
+}

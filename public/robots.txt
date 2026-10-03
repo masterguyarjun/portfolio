@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://masterguyarjun.online
+
+# Sitemaps
+Sitemap: https://masterguyarjun.online/sitemap.xml
